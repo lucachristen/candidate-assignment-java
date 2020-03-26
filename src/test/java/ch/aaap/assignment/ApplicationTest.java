@@ -55,15 +55,15 @@ public class ApplicationTest {
   }
 
   @Test
-  public void returnsAmountOfPoliticalCommunitiesInDistict() {
+  public void returnsAmountOfPoliticalCommunitiesInDistrict() {
     assertEquals(
         14,
-        sut.getAmountOfPoliticalCommunitiesInDistict("101"),
+        sut.getAmountOfPoliticalCommunitiesInDistrict("101"),
         "Correct amount of political communities in in distric with number '101'");
 
     assertThrows(
         IllegalArgumentException.class,
-        () -> sut.getAmountOfPoliticalCommunitiesInDistict("9999"),
+        () -> sut.getAmountOfPoliticalCommunitiesInDistrict("9999"),
         "Expected IllegalArgumentException");
   }
 
@@ -96,10 +96,10 @@ public class ApplicationTest {
   }
 
   @Test
-  public void returnsAmountOfPoliticalCommunityWithoutPostalCommunities() {
+  public void returnsAmountOfPoliticalCommunitiesWithoutPostalCommunities() {
     assertEquals(
         3,
-        sut.getAmountOfPoliticalCommunityWithoutPostalCommunities(),
+        sut.getAmountOfPoliticalCommunitiesWithoutPostalCommunities(),
         "Correct amount of political communities without postal communities");
   }
 }

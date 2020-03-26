@@ -176,9 +176,9 @@ public class Application {
 
   /**
    * @param districtNumber of a district (e.g. 101)
-   * @return amount of districts in given canton
+   * @return amount of political communities in given district
    */
-  public long getAmountOfPoliticalCommunitiesInDistict(String districtNumber)
+  public long getAmountOfPoliticalCommunitiesInDistrict(String districtNumber)
       throws IllegalArgumentException {
     if (model.getDistricts().stream()
         .noneMatch(district -> district.getNumber().equals(districtNumber))) {
@@ -193,7 +193,7 @@ public class Application {
 
   /**
    * @param zipCode 4 digit zip code
-   * @return district that belongs to specified zip code
+   * @return districts that belong to specified zip code
    */
   public Set<String> getDistrictsForZipCode(String zipCode) {
     return model.getPostalCommunities().stream()
@@ -220,7 +220,7 @@ public class Application {
   /**
    * https://de.wikipedia.org/wiki/Kanton_(Schweiz)
    *
-   * @return amount of canton
+   * @return amount of cantons
    */
   public long getAmountOfCantons() {
     return model.getCantons().size();
@@ -231,13 +231,13 @@ public class Application {
    *
    * @return amount of political communities without postal communities
    */
-  public long getAmountOfPoliticalCommunityWithoutPostalCommunities() {
-    long politicalCommunityWithPostalCommunitiesCount = model.getPostalCommunities().stream()
+  public long getAmountOfPoliticalCommunitiesWithoutPostalCommunities() {
+    long politicalCommunitiesWithPostalCommunitiesCount = model.getPostalCommunities().stream()
         .flatMap(postalCommunity -> postalCommunity.getPoliticalCommunities().stream())
         .distinct()
         .count();
 
     return model.getPoliticalCommunities().size()
-        - politicalCommunityWithPostalCommunitiesCount;
+        - politicalCommunitiesWithPostalCommunitiesCount;
   }
 }
